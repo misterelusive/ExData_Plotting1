@@ -1,3 +1,11 @@
+# Implementing plot2
+
+#
+# Function to get the data from the zip archive
+# 
+# Note - The file has been downloaded and saved on the local drive.
+#        Later we are just unzipping it to extract the required file.
+#
 getData <- function() {
     tempFile <- "plot_data.csv"
     if(file.exists(tempFile)) {
@@ -16,9 +24,15 @@ getData <- function() {
     dataTable
 }
 
+#
+# Function to draw the plot
+#
 makePlot2 <- function() {
     dataTable <- getData()
-    png(filename = "plot2.png", width = 480, height = 480, units = "px")
+    
+	# saving the plot generated in the required format
+	png(filename = "plot2.png", width = 480, height = 480, units = "px")
+	
     plot(dataTable$DateTime, dataTable$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
     dev.off()
 }
